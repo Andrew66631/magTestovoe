@@ -12,7 +12,7 @@ class LocationDetectorComponent extends CBitrixComponent
             $currentLocationId = $_SESSION['CURRENT_LOCATION_ID'];
             $location = LocationTable::getList(array(
                 'select' => array('NAME'),
-                'filter' => array('=ID' => $currentLocationId),
+                'filter' => array('ID' => $currentLocationId),
                 'limit' => 1
             ))->fetch();
             $this->arResult['LOCATION'] = $location['NAME'];
