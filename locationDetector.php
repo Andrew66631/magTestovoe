@@ -9,15 +9,13 @@ class LocationDetectorComponent extends CBitrixComponent
     public function executeComponent()
     {
         if ($this->startResultCache()) {
-            Loader::includeModule('sale');
+            $currentLocationId = $_SESSION['CURRENT_LOCATION_ID'];
             $location = LocationTable::getList(array(
-                'select' => array('ID', 'NAME_RU' => 'NAME.NAME'),
-                'filter' => array('=NAME.LANGUAGE_ID' => 'ru'),
-                'order' => array('SORT' => 'ASC'),
+                'select' => array('NAME'),
+                'filter' => array('=ID' => $currentLocationId),
                 'limit' => 1
             ))->fetch();
-
-            $this->arResult['LOCATION'] = $location['NAME_RU'];
+            $this->arResult['LOCATION'] = $location['NAME'];
             $this->includeComponentTemplate();
         }
     }
