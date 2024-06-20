@@ -18,7 +18,6 @@ class LocationTable extends Entity\DataManager
                 'primary' => true,
                 'autocomplete' => true
             )),
-            new Entity\StringField('CODE'),
             new Entity\StringField('NAME'),
         );
     }
